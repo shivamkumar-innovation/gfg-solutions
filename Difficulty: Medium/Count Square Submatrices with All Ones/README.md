@@ -1,0 +1,13 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/count-square-submatrices-with-all-ones/1?utm_source=chatgpt.com">Count Square Submatrices with All Ones</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO" style="--text-color: var(--problem-text-color);"><p><span style="font-size: 18px;">Given an <strong>n × m</strong> binary matrix <strong>mat[][]</strong>, count the total number of <strong>square </strong>submatrices whose every element is <strong>1</strong>.</span></p>
+<p><span style="font-size: 18px;"><strong>Examples :</strong></span></p>
+<pre style="background: #eee; border: 1px solid #ccc; padding: 5px 10px;"><span style="font-size: 18px;"><strong style="font-size: 18px;">Input: </strong><span style="font-size: 18px;">n = 3, m = 3</span><strong style="font-size: 18px;">, </strong><span style="font-size: 18px;">mat[][] = [[0, 1, 1], [1, 1, 1], [0, 1, 1]]<br><img src="https://media.geeksforgeeks.org/img-practice/prod/addEditProblem/929766/Web/Other/blobid1_1781592199.webp" width="144" height="142"><br></span><strong style="font-size: 18px;">Output: </strong><span style="font-size: 18px;">9<br></span><strong style="font-size: 18px;">Explanation:</strong><span style="font-size: 18px;"> There are 9 square submatrices containing only 1s:
+7 squares of size 1 × 1
+2 squares of size 2 × 2
+0 squares of size 3 × 3
+Therefore, the total number of square submatrices with all 1s is 7 + 2 = 9.<br></span></span></pre>
+<pre style="background: #eee; border: 1px solid #ccc; padding: 5px 10px;"><span style="font-size: 18px;"><strong style="font-size: 18px;">Input: </strong><span style="font-size: 18px;">n = 3, m = 3 mat[][] = [[1, 0, 1], [1, 1, 0],&nbsp; [1, 1, 0]]<br><img src="https://media.geeksforgeeks.org/img-practice/prod/addEditProblem/929766/Web/Other/blobid0_1781592121.webp" width="143" height="142"><br></span><strong style="font-size: 18px;">Output: </strong><span style="font-size: 18px;">7<br></span><strong style="font-size: 18px;">Explanation:</strong><span style="font-size: 18px;"> There are 7 square submatrices containing only 1s:
+6 squares of size 1 × 1
+1 squares of size 2 × 2
+0 squares of size 3 × 3
+Therefore, the total number of square submatrices with all 1s is 6 + 1 = 7.<br></span></span></pre>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ n, m ≤&nbsp; 10<sup>3</sup></span><br><span style="font-size: 18px;">0 ≤ mat[i][j]</span><span style="font-size: 18px;">&nbsp;≤ 1</span></p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Dynamic Programming</code>&nbsp;
