@@ -10,12 +10,14 @@ public:
         int l=0;
         if(a[i]==a[j]){
            
-            l=1+f(a,d,i,j-1)+f(a,d,i+1,j);
+            l=1;
         }
         else{
-            l=-f(a,d,i+1,j-1)+f(a,d,i,j-1)+f(a,d,i+1,j);
+            l=-f(a,d,i+1,j-1);
         }
-       return  d[i][j]=l;
+        int u=f(a,d,i,j-1);
+        int r=f(a,d,i+1,j);
+       return  d[i][j]=l+u+r;
     }
     int countPS(string a) {
          vector<vector<int>> d(a.size(),vector<int>(a.size(),-1));
