@@ -2,53 +2,59 @@ class Solution {
 public:
     const int INF = 1e9;
 
-    int f(string &s1, string &s2, vector<vector<int>> &dp, int i, int j) {
-        if (j == s2.size())
+    int f(string &a, string &s, vector<vector<int>> &d, int i, int j) {
+
+        if (j == s.size())
             return i - 1;
 
-        if (i == s1.size())
+        if (i == a.size())
             return INF;
 
-        if (dp[i][j] != -1)
-            return dp[i][j];
+        if (d[i][j] != -1)
+            return d[i][j];
 
-        int ans = INF;
+        int l = INF;
 
-        // Take current character if it matches
-        if (s1[i] == s2[j])
-            ans = f(s1, s2, dp, i + 1, j + 1);
+        if (a[i] == s[j])
+            l = f(a, s, d, i + 1, j + 1);
 
-        // Skip current character
-        ans = min(ans, f(s1, s2, dp, i + 1, j));
+        int r=f(a, s, d, i + 1, j);
 
-        return dp[i][j] = ans;
+        return d[i][j] = min(r,l);
     }
 
-    string minWindow(string s1, string s2) {
-        int n = s1.size(), m = s2.size();
+    string minWindow(string a, string s) {
+
+        int n = a.size();
+        int m = s.size();
 
         if (m == 0) return "";
         if (n == 0) return "";
 
-        vector<vector<int>> dp(n, vector<int>(m, -1));
+        vector<vector<int>> d(n, vector<int>(m, -1));
 
-        int bestLen = INF;
-        int start = -1;
+        int len = INF;
+        int id = -1;
 
         for (int i = 0; i < n; i++) {
-            if (s1[i] == s2[0]) {
-                int end = f(s1, s2, dp, i, 0);
 
-                if (end != INF && end - i + 1 < bestLen) {
-                    bestLen = end - i + 1;
-                    start = i;
-                }
+            if (a[i] != s[0])
+                continue;
+
+            int r = f(a, s, d, i, 0);
+
+            if (r == INF)
+                continue;
+
+            if (r - i + 1 < len) {
+                len = r - i + 1;
+                id = i;
             }
         }
 
-        if (start == -1)
+        if (id == -1)
             return "";
 
-        return s1.substr(start, bestLen);
+        return a.substr(id, len);
     }
 };
