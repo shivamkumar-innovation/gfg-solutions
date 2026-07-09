@@ -8,21 +8,18 @@ public:
 
         if (d[i][j] != -1)
             return d[i][j];
-
-        // f(a, s, d, i - 1, j);
-        // f(a, s, d, i, j - 1);
-
+            
+            int l=0;
         if (a[i] == s[j])
-            d[i][j] = 1 + f(a, s, d, i - 1, j - 1);
-        else
-            d[i][j] = 0;
+            l = 1 + f(a, s, d, i - 1, j - 1);
+
             f(a, s, d, i - 1, j);
         f(a, s, d, i, j - 1);
 
 
-        ans = max(ans, d[i][j]);
+        ans = max(ans, l);
 
-        return d[i][j];
+        return d[i][j]=l;
     }
 
     int longCommSubstr(string a, string s) {
