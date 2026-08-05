@@ -1,0 +1,58 @@
+class Solution {
+	public:
+	vector<int>ans;
+	void f(int i, int p, vector<vector<int>> & a, vector<int>&vi, vector<int>&d, vector<int>&l, int time) {
+		vi[i] = 1;
+		d[i] = time;
+		l[i] = time++;
+		int child = 0;
+		int j = 0;
+		while (j<a[i].size()) {
+			if (a[i][j] == p) {
+			}
+			else if (!vi[a[i][j]]) {
+				child++;
+				f(a[i][j], i, a, vi, d, l, time);
+				l[i] = min(l[i], l[a[i][j]]);
+				if (p != -1 && d[i] <= l[a[i][j]]) {
+					ans[i]=1;
+				}
+			}
+			else {
+				l[i] = min(d[a[i][j]], l[i]);
+			}
+			if (p == -1 && child > 1)
+			ans[i]=1;
+			j++;
+		}
+		
+	}
+	vector<int> articulationPoints(int n, vector<vector<int>> & v) {
+		int i = 0;
+		vector<vector<int>> a(n);
+		vector<int>vi(n, 0);
+		vector<int>d(n, -1);
+		vector<int>l(n, -1);
+		ans.assign(n,0);
+		while (i<v.size()) {
+			a[v[i][0]].push_back(v[i][1]);
+			a[v[i][1]].push_back(v[i][0]);
+			i++;
+		}
+		for (int i = 0; i < n; i++) {
+			if (!vi[i]) {
+				f(i, -1, a, vi, d, l, 0);
+			}
+		}
+		vector<int>b;
+		for (int i = 0; i < n; i++) {
+			if (ans[i]) {
+				b.push_back(i);
+			}
+		}
+		if (b.empty())
+			return {-1};
+		
+		return b;
+	}
+};
